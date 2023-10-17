@@ -2,20 +2,20 @@
 #include <unistd.h>
 
 /**
- * _puts - Print a string to stdout.
- * @str: The string to be printed.
+ * _puts - Prints a string to the standard output
+ * @str: The string to be printed
  *
- * Return: The number of characters printed.
+ * Return: The number of characters printed
  */
 int _puts(char *str)
 {
-	int i = 0;
+	int length = 0;
 
-	while (str[i])
+	while (str[length] != '\0')
 	{
-		_putchar(str[i]);
-		i++;
+		_putchar(str[length]);
+		length++;
 	}
 
-	return i;
+	return (length);
 }
