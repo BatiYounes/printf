@@ -10,5 +10,6 @@ int print_string(va_list args, int printed_chars);
 int _puts(char *str);
 int _printif(const char *format, ...);
 int print_number(int n);
+int print_binary(unsigned int n);
 
 #endif /* MAIN_H */
