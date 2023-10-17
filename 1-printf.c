@@ -1,68 +1,63 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
- * _printif - Custom printf function to handle %d and %i format specifiers
- * @format: A string containing the format to print.
- * @...: The variable arguments to replace format specifiers.
+ * _printif - Custom printf function
+ * @format: The format string
  *
  * Return: The number of characters printed.
  */
-int _printif(const char *format, ...) {
+int _printif(const char *format, ...)
+{
 	va_list args;
 	int printed_chars = 0;
-	int n;
+	int i;
 
 	va_start(args, format);
-
-	while (*format) {
-		if (*format == '%') {
-			format++;
-			if (*format == 'd' || *format == 'i') {
-				n = va_arg(args, int);
-				if (n < 0) {
-					_putchar('-');
-					printed_chars++;
-					n = -n;
-				}
-				printed_chars += print_number(n);
-			} else {
-				_putchar('%');
-				printed_chars++;
-			}
-		} else {
-			_putchar(*format);
+	for (i = 0; format && format[i]; i++)
+	{
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
 			printed_chars++;
 		}
-		format++;
+		else
+		{
+			i++;
+			if (format[i] == 'd' || format[i] == 'i')
+			{
+				int num = va_arg(args, int);
+				printed_chars += print_number(num);
+			}
+		}
 	}
-
 	va_end(args);
 	return (printed_chars);
 }
 
 /**
- * print_number - Print an integer number
- * @n: The integer to print.
+ * print_number - Print a number
+ * @n: The number to print
  *
- * Return: The number of digits printed.
+ * Return: The number of characters printed.
  */
-int print_number(int n) {
-	int digits = 0;
+int print_number(int n)
+{
+	int printed_chars = 0;
 
-	if (n == 0) {
-		_putchar('0');
-		return (1);
-	}
-	if (n < 0) {
+	if (n < 0)
+	{
+		_putchar('-');
 		n = -n;
+		printed_chars++;
 	}
 
-	while (n > 0) {
-		_putchar(n % 10 + '0');
-		n /= 10;
-		digits++;
+	if (n / 10)
+	{
+		printed_chars += print_number(n / 10);
 	}
 
-	return (digits);
+	_putchar((n % 10) + '0');
+	printed_chars++;
+
+	return (printed_chars);
 }
