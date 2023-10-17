@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  * _printf - Custom printf function to print formatted output.
@@ -10,31 +11,30 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	va_start(args, format);
-
 	int printed_chars = 0;
+
+	va_start(args, format);
 
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			_putchar(*format);
+			write(1, format, 1);  /* Print the character */
 			printed_chars++;
 		}
 		else
 		{
-			format++;
+			format++;  /* Move past the '%' */
 			switch (*format)
 			{
 				case 'c':
-					printed_chars += print_char(args, printed_chars);
+					printed_chars += _putchar(va_arg(args, int));
 					break;
 				case 's':
-					printed_chars += print_string(args, printed_chars);
+					printed_chars += _puts(va_arg(args, char *));
 					break;
 				case '%':
-					_putchar('%');
-					printed_chars++;
+					printed_chars += _putchar('%');
 					break;
 			}
 		}
