@@ -22,8 +22,6 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				return (-1);
-			if (*format == 'b')
-				printed_chars += print_binary(va_arg(args, unsigned int));
 			else
 			{
 				_putchar('%');
