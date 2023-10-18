@@ -19,12 +19,12 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			write(1, format, 1);  /* Print the character */
+			write(1, format, 1); /* Print the character */
 			printed_chars++;
 		}
 		else
 		{
-			format++;  /* Move past the '%' */
+			format++; /* Move past the '%' */
 			switch (*format)
 			{
 				case 'c':
