@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_binary - Helper function to print a binary number.
+ * print_binary - Helper function to print an unsigned integer in binary.
  * @args: The argument list.
  * @printed_chars: The current count of printed characters.
  *
@@ -9,33 +9,28 @@
  */
 int print_binary(va_list args, int printed_chars)
 {
-    int n = va_arg(args, int);
-    int i = 0;
-    int bin[32];
+	unsigned int num = va_arg(args, unsigned int);
+	int i, flag = 0;
 
-    if (n == 0)
-    {
-        _putchar('0');
-        printed_chars++;
-    }
-    else
-    {
-        while (n > 0)
-        {
-            bin[i] = n % 2;
-            n = n / 2;
-            i++;
-        }
+	if (num == 0)
+	{
+		_putchar('0');
+		return (printed_chars + 1);
+	}
 
-        i--;
-
-        while (i >= 0)
-        {
-            _putchar('0' + bin[i]);
-            printed_chars++;
-            i--;
-        }
-    }
-
-    return (printed_chars);
+	for (i = (1 << 31); i > 0; i >>= 1)
+	{
+		if (num & i)
+		{
+			_putchar('1');
+			flag = 1;
+			printed_chars++;
+		}
+		else if (flag)
+		{
+			_putchar('0');
+			printed_chars++;
+		}
+	}
+	return (printed_chars);
 }
