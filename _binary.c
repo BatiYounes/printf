@@ -10,7 +10,8 @@
 int print_binary(va_list args, int printed_chars)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	int i, flag = 0;
+	int i = 0;
+	int flag = 0;
 
 	if (num == 0)
 	{
@@ -18,7 +19,7 @@ int print_binary(va_list args, int printed_chars)
 		return (printed_chars + 1);
 	}
 
-	for (i = (1 << 31); i > 0; i >>= 1)
+	for (i = 1 << 31; i > 0; i >>= 1)
 	{
 		if (num & i)
 		{
