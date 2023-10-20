@@ -1,42 +1,24 @@
 #include "main.h"
+#include <stdarg.h>
+#include <unistd.h>
 
 /**
- * _printf - Custom printf function
- * @format: The format string
+ * _printf - Custom printf function to print formatted output.
+ * @format: A string containing format specifiers.
  *
- * Return: The number of characters printed
+ * Return: The number of characters printed (excluding the null byte).
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int printed_chars = 0;
 
-	if (!format)
-		return (-1);
-
 	va_start(args, format);
+
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format != '%')
 		{
-<<<<<<< HEAD
-			format++;
-			if (*format == '\0')
-				return (-1);
-			if (*format == 'b')
-				printed_chars += print_binary(va_arg(args, unsigned int));
-			else
-			{
-				_putchar('%');
-				_putchar(*format);
-				printed_chars += 2;
-			}
-		}
-		else
-		{
-			_putchar(*format);
-			printed_chars++;
-=======
 			write(1, format, 1); /* Print the character */
 			printed_chars++;
 		}
@@ -55,10 +37,10 @@ int _printf(const char *format, ...)
 					printed_chars += _putchar('%');
 					break;
 			}
->>>>>>> c32d8f8a63f7a1606d3ed31c5d3d25cf85a77d20
 		}
 		format++;
 	}
+
 	va_end(args);
 	return (printed_chars);
 }
