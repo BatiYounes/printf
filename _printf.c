@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+<<<<<<< HEAD
 			format++;
 			if (*format == '\0')
 				return (-1);
@@ -35,6 +36,26 @@ int _printf(const char *format, ...)
 		{
 			_putchar(*format);
 			printed_chars++;
+=======
+			write(1, format, 1); /* Print the character */
+			printed_chars++;
+		}
+		else
+		{
+			format++; /* Move past the '%' */
+			switch (*format)
+			{
+				case 'c':
+					printed_chars += _putchar(va_arg(args, int));
+					break;
+				case 's':
+					printed_chars += _puts(va_arg(args, char *));
+					break;
+				case '%':
+					printed_chars += _putchar('%');
+					break;
+			}
+>>>>>>> c32d8f8a63f7a1606d3ed31c5d3d25cf85a77d20
 		}
 		format++;
 	}
