@@ -6,7 +6,7 @@
  *
  * Return: returns 1(success) otherwise -1 on error
  */
-int _putchar(char *c)
+int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
