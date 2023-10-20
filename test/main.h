@@ -4,7 +4,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int _check_spec(char, va_list);
+int check_spec(char, va_list);
 
 /**
  * struct idn - identifiers and right func call
