@@ -5,6 +5,12 @@
 int _putchar(char c);
 int _printf(const char *format, ...);
 int check_spec(char, va_list);
+int print_mod(va_list);
+int print_chr(va_list);
+int print_str(va_list);
+int print_dit(va_list);
+int print_iit(va_list);
+int dit_helper(int num);
 
 /**
  * struct idn - identifiers and right func call
@@ -13,7 +19,7 @@ int check_spec(char, va_list);
  */
 typedef struct idn
 {
-	char i;
+	char id;
 	int (*f)(va_list);
 } idn;
 
