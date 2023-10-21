@@ -1,13 +1,26 @@
 #ifndef MAIN_H
 #define MAIN_H
-
 #include <stdarg.h>
 
-int _printf(const char *format, ...);
 int _putchar(char c);
-int print_char(va_list args, int printed_chars);
-int print_string(va_list args, int printed_chars);
-int print_binary(va_list args, int printed_chars);
-int _puts(char *str);
+int _printf(const char *format, ...);
+int check_spec(char, va_list);
+int print_mod(va_list);
+int print_chr(va_list);
+int print_str(va_list);
+int print_dit(va_list);
+int print_iit(va_list);
+int dit_helper(int num);
+
+/**
+ * struct idn - identifiers and right func call
+ * @i: first member
+ * @f: second member
+ */
+typedef struct idn
+{
+	char id;
+	int (*f)(va_list);
+} idn;
 
 #endif /* MAIN_H */
