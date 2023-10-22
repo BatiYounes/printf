@@ -4,7 +4,7 @@
 
 /**
  * check_spec - checks if c is a specifier
- * @c: char argument
+ * @str: char argument
  * @args: variadic argument
  *
  * Return: returns how many character was printed

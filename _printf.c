@@ -29,19 +29,15 @@ int _printf(const char *format, ...)
 				format += 2;
 				count += operation;
 			}
-			else if (operation == 0)
+			if (operation == 0)
 			{
 				_putchar(*(format++));
 				count++;
 			}
-			else if (operation == -97)
-			{
+			if (operation == -97)
 				format += 2;
-			}
-			else if (operation == -1)
-			{
+			if (operation == -1)
 				format++;
-			}
 		}
 		else
 		{
