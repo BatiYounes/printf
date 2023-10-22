@@ -4,7 +4,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int check_spec(char, va_list);
+int check_spec(const char *, va_list);
 int print_mod(va_list);
 int print_chr(va_list);
 int print_str(va_list);
@@ -19,7 +19,7 @@ int dit_helper(int num);
  */
 typedef struct idn
 {
-	char id;
+	char *id;
 	int (*f)(va_list);
 } idn;
 
