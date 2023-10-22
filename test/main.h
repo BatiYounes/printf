@@ -14,7 +14,7 @@ int dit_helper(int num);
 
 /**
  * struct idn - identifiers and right func call
- * @i: first member
+ * @id: first member
  * @f: second member
  */
 typedef struct idn
