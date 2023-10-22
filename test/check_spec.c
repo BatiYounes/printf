@@ -9,23 +9,26 @@
  *
  * Return: returns how many character was printed
  */
-int check_spec(char c, va_list args)
+int check_spec(const char *str, va_list args)
 {
 	idn idns[] = {
-		{'%', print_mod},
-		{'c', print_chr},
-		{'s', print_str},
-		{'d', print_dit},
-		{'i', print_iit},
-		{'\0', NULL}
+		{"%", print_mod},
+		{"c", print_chr},
+		{"s", print_str},
+		{"d", print_dit},
+		{"i", print_iit},
+		{NULL, NULL}
 	};
 	int i, count;
 
+	if (*(str) == '\0')
+		return (-1);
+
 	count = 0;
 	i = 0;
-	while (idns[i].id != '\0')
+	while (idns[i].id != NULL)
 	{
-		if (idns[i].id == c)
+		if (idns[i].id[0] == *(str))
 		{
 			count = idns[i].f(args);
 			return (count);

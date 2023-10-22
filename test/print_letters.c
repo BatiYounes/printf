@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 
 /**
  * print_chr - prints the character on the stdout
@@ -28,12 +29,19 @@ int print_str(va_list args)
 	int i;
 
 	str = va_arg(args, char *);
+
+	if (str == NULL)
+		str = "(null)";
+
 	i = 0;
 	while (*(str + i) != '\0')
 	{
 		_putchar(*(str + i));
 		i++;
 	}
+
+	if (i == 0)
+		i = -97;
 
 	return (i);
 }

@@ -23,17 +23,24 @@ int _printf(const char *format, ...)
 	{
 		if (*(format) == '%')
 		{
-			operation = check_spec(*(format + 1), args);
+			operation = check_spec((format + 1), args);
 			if (operation > 0)
 			{
 				format += 2;
 				count += operation;
 			}
-
-			if (operation == 0)
+			else if (operation == 0)
 			{
 				_putchar(*(format++));
 				count++;
+			}
+			else if (operation == -97)
+			{
+				format += 2;
+			}
+			else if (operation == -1)
+			{
+				format++;
 			}
 		}
 		else
