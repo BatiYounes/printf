@@ -19,7 +19,7 @@ int dit_helper(int num);
  */
 typedef struct idn
 {
-	char id;
+	char *id;
 	int (*f)(va_list);
 } idn;
 
